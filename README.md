@@ -7,7 +7,7 @@ Reverse and output a video file keeping the same compression, format, and frame 
 ```
 #import "AVUtilities.h"
 
-AVAsset *originalAsset = [AVURLAsset initWithURL:[NSURL urlWithString:@"~/video.mp4"]];
+AVAsset *originalAsset = [[AVURLAsset alloc] initWithURL:[NSURL urlWithString:@"~/video.mp4"]];
 AVAsset *reversedAsset = [AVUtilities reverseAssetWithAsset:originalAsset outputURL:@"~/reversedvideo.mp4"];
 ```
 
