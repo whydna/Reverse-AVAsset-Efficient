@@ -55,7 +55,7 @@
     [writer addInput:writerInput];
     
     [writer startWriting];
-    [writer startSessionAtSourceTime:kCMTimeZero];
+    [writer startSessionAtSourceTime:CMSampleBufferGetPresentationTimeStamp((__bridge CMSampleBufferRef)samples[0])];
     
     // Append the frames to the output.
     // Notice we append the frames from the tail end, using the timing of the frames from the front.
