@@ -20,17 +20,12 @@
     // read in the samples
     NSMutableArray *samples = [[NSMutableArray alloc] init];
     
-    while(1) {
-        CMSampleBufferRef sample = [readerOutput copyNextSampleBuffer];
-        
-        if (sample == NULL) {
-            break;
-        }
-        
+    CMSampleBufferRef sample;
+    while(sample = [readerOutput copyNextSampleBuffer]) {
         [samples addObject:(__bridge id)sample];
         CFRelease(sample);
     }
-    
+
     // Initialize the writer
     AVAssetWriter *writer = [[AVAssetWriter alloc] initWithURL:outputURL
                                                       fileType:AVFileTypeMPEG4
